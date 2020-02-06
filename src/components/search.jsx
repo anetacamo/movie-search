@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import MovieDetails from "./components/moviedetails.jsx";
-import FavouriteMovies from "./components/favouritemovies.jsx";
-import './App.css';
+import MovieDetails from "./moviedetails.jsx";
+import FavouriteMovies from "./favouritemovies.jsx";
 
 const API_KEY = "4cb1eeab94f45affe2536f2c684a5c9e";
 const API_URL = "https://api.themoviedb.org/3/search/movie";
 
-export default function App() {
+export default function Search() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [query, setQuery] = useState("");
@@ -26,8 +25,8 @@ export default function App() {
             );
             const json = await response.json();
             setMovies(json.results);
-            // TODO - check each movie's id in the json.results array - and see if it matches any of the likedMoviesList
-            // if so - add a liked=true property to that movie 
+            // TODO - check each movie's id in the json.results array - and see id it matches any of the likedMoviesList
+            // if so add a liked property to that movie
             setLoading(false);            
           } catch (error) {
             setError("Something went wrong");
@@ -66,7 +65,7 @@ export default function App() {
     <div className="search">
       <input
         className="search-field"
-        placeholder="Search"
+        placeholder="Search for a movie"
         value={query}
         onChange={event => setQuery(event.target.value)}
       />
