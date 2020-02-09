@@ -46,6 +46,7 @@ export default function App() {
     }
   }, [query]);
 
+
   function handleLike(movie) {
     movie.liked = !movie.liked;
     setSelectedMovie(movie);
@@ -62,11 +63,12 @@ export default function App() {
     }
   };
 
+
   return (
     <div className="search">
       <input
         className="search-field"
-        placeholder="Search"
+        placeholder="Search for a movie"
         value={query}
         onChange={event => setQuery(event.target.value)}
       />
@@ -86,19 +88,7 @@ export default function App() {
       )}
       </div>
       <MovieDetails movie={selectedMovie} handleClick={() => handleLike(selectedMovie)} />
-
-       {/* TODO Create a FavouriteMovies component: 
-           how to pass a setSelectedMovie on click?
-        <FavouriteMovies moviesList={likedMoviesList} />
-        */}
-      <div className="favourite-movies movie-listing">
-        <p><span className="underlined">your favourite movies</span> {likedMoviesList.length}</p>
-        {likedMoviesList.map(movie => <p
-          key={movie.id}
-          onClick={() => setSelectedMovie(movie)}
-          >{movie.title}</p>
-        )}
-      </div>
+      <FavouriteMovies moviesList={likedMoviesList} handleClick={setSelectedMovie}/>  
     </div>
   );
 }
