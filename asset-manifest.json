@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/movie-search/static/css/main.728845a0.chunk.css",
+    "main.js": "/movie-search/static/js/main.197f50fb.chunk.js",
+    "main.js.map": "/movie-search/static/js/main.197f50fb.chunk.js.map",
+    "runtime-main.js": "/movie-search/static/js/runtime-main.6bcaf96f.js",
+    "runtime-main.js.map": "/movie-search/static/js/runtime-main.6bcaf96f.js.map",
+    "static/css/2.671adc2c.chunk.css": "/movie-search/static/css/2.671adc2c.chunk.css",
+    "static/js/2.c835707b.chunk.js": "/movie-search/static/js/2.c835707b.chunk.js",
+    "static/js/2.c835707b.chunk.js.map": "/movie-search/static/js/2.c835707b.chunk.js.map",
+    "index.html": "/movie-search/index.html",
+    "precache-manifest.0d8d0cf4d3960b8bfbdd7be0332b30c9.js": "/movie-search/precache-manifest.0d8d0cf4d3960b8bfbdd7be0332b30c9.js",
+    "service-worker.js": "/movie-search/service-worker.js",
+    "static/css/2.671adc2c.chunk.css.map": "/movie-search/static/css/2.671adc2c.chunk.css.map",
+    "static/css/main.728845a0.chunk.css.map": "/movie-search/static/css/main.728845a0.chunk.css.map",
+    "static/js/2.c835707b.chunk.js.LICENSE": "/movie-search/static/js/2.c835707b.chunk.js.LICENSE",
+    "static/media/font-awesome.css": "/movie-search/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6bcaf96f.js",
+    "static/css/2.671adc2c.chunk.css",
+    "static/js/2.c835707b.chunk.js",
+    "static/css/main.728845a0.chunk.css",
+    "static/js/main.197f50fb.chunk.js"
+  ]
+}
