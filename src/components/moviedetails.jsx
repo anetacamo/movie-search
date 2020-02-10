@@ -14,7 +14,7 @@ export default function MovieDetails(props) {
             ) : (null)}
           </h2>
           <Like 
-            liked={props.movie.liked}
+            liked={props.movies.some(film => film.id === props.movie.id)}
             onClick={props.handleClick}
           />
           <Stars 

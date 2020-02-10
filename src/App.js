@@ -26,8 +26,6 @@ export default function App() {
             );
             const json = await response.json();
             setMovies(json.results);
-            // TODO - check each movie's id in the json.results array - and see if it matches any of the likedMoviesList
-            // if so - add a liked=true property to that movie 
             setLoading(false);            
           } catch (error) {
             setError("Something went wrong");
@@ -48,20 +46,18 @@ export default function App() {
 
 
   function handleLike(movie) {
-    movie.liked = !movie.liked;
-    setSelectedMovie(movie);
-    if (movie.liked) {
-      const array = ([...likedMoviesList, movie])
-      setLikedMovieList(array);
-      localStorage.setItem('liked', JSON.stringify(array));
-    } else {
-      const array = [...likedMoviesList];
-      const index = array.indexOf(movie)
-      array.splice(index, 1);
-      setLikedMovieList(array)
-      localStorage.setItem('liked', JSON.stringify(array));
-    }
+    setLikedMovieList(movies => {
+      const isMovieHere = movies.some(film => film.id === movie.id);
+      if (!isMovieHere) {
+        var updatedMovies = ([...movies, movie])
+      } else {
+        var updatedMovies = movies.filter(film => film.id !== movie.id) 
+      }
+      setLikedMovieList(updatedMovies);
+      localStorage.setItem('liked', JSON.stringify(updatedMovies));
+    })
   };
+
 
 
   return (
@@ -74,20 +70,24 @@ export default function App() {
       />
       <div className="underline"></div>
       <div className="results movie-listing">
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : query.length !== 0 && movies.length === 0 ? (
-        <p>No movies found</p>
-      ) : (
-        movies.map(movie => <p
-          key={movie.id}
-          onClick={() => setSelectedMovie(movie)}
-        >{movie.title} {movie.liked && (<i className="fa fa-heart red" aria-hidden="true"/>)}</p>)
-      )}
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : query.length !== 0 && movies.length === 0 ? (
+          <p>No movies found</p>
+        ) : (
+          movies.map(movie => <p
+            key={movie.id}
+            onClick={() => setSelectedMovie(movie)}
+          >{movie.title}
+          </p>)
+        )}
       </div>
-      <MovieDetails movie={selectedMovie} handleClick={() => handleLike(selectedMovie)} />
+      <MovieDetails 
+        movie={selectedMovie} 
+        movies={likedMoviesList} 
+        handleClick={() => handleLike(selectedMovie)} />
       <FavouriteMovies moviesList={likedMoviesList} handleClick={setSelectedMovie}/>  
     </div>
   );
